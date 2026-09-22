@@ -16,11 +16,11 @@
  *******************************************************/
 
 const CONFIG = {
-  SPREADSHEET_ID: "PASTE_GOOGLE_SHEET_ID_HERE",
+  SPREADSHEET_ID: "1l8YpXmc-UuK6HOtSlqP4hq06QyD9SBf_c2k9Jm_eJjs",
   SHEET_NAME: "Pendaftaran",
 
-  RECEIPT_FOLDER_ID: "PASTE_RECEIPT_FOLDER_ID_HERE",
-  PDF_FOLDER_ID: "PASTE_PDF_FOLDER_ID_HERE",
+  RECEIPT_FOLDER_ID: "1_ca2ekCbPvlv7WHWPUcQOahTsCtoPM6M",
+  PDF_FOLDER_ID: "1-fVeDhKRsMyzw-P3Zouk3wRp-JM4kzE2",
 
   TABLE_PRICE: 2000,
   CHAIR_PRICE: 200,
@@ -432,8 +432,6 @@ function buildPdfSheet_(sheet, d, total, ref) {
       sheet.setRowHeight(r, 23);
     }
   }
-
-  // Print settings helper cell content is intentionally not used.
 }
 
 
