@@ -1,7 +1,7 @@
 /* ================================
    CONFIG
 ================================ */
-const APPS_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxR3_FacfMCznalRpHdCrRn1ypsEI90T2xNH-Ll0DXp28TM9pn34XYCp897ibZYjbDA/exec";
 
 const TABLE_PRICE = 2000;
 const CHAIR_PRICE = 200;
