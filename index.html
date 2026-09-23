@@ -3,172 +3,640 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Majlis Makan Malam 30 Tahun PAS Sarawak 2026</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- ================================
+       HEADER
+  ================================= -->
+
   <header class="hero">
     <div class="hero-inner">
-      <img src="images/logo.png" alt="Logo" class="logo" onerror="this.style.display='none'">
+
+      <img
+        src="images/logo.png"
+        alt="Logo"
+        class="logo"
+        onerror="this.style.display='none'"
+      >
+
       <p class="eyebrow">2026</p>
-      <h1>MAJLIS MAKAN MALAM<br>30 TAHUN PAS SARAWAK</h1>
+
+      <h1>
+        MAJLIS MAKAN MALAM<br>
+        30 TAHUN PAS SARAWAK
+      </h1>
+
       <h2>TABUNG PILIHANRAYA PAS SARAWAK</h2>
-      <p class="hero-note">Borang Penyertaan & Pengesahan Sumbangan</p>
+
+      <p class="hero-note">
+        Borang Penyertaan & Pengesahan Sumbangan
+      </p>
+
     </div>
   </header>
 
+
+  <!-- ================================
+       MAIN
+  ================================= -->
+
   <main class="container">
+
+    <!-- ================================
+         BORANG UTAMA
+    ================================= -->
+
     <form id="registrationForm" novalidate>
+
+      <!-- 1. MAKLUMAT PENYUMBANG -->
+
       <section class="card">
+
         <h3>1. Maklumat Penyumbang</h3>
 
         <div class="field">
-          <label for="nama">Nama Penuh <span>*</span></label>
-          <input id="nama" name="nama" type="text" autocomplete="name" required>
+
+          <label for="nama">
+            Nama Penuh <span>*</span>
+          </label>
+
+          <input
+            id="nama"
+            name="nama"
+            type="text"
+            autocomplete="name"
+            required
+          >
+
         </div>
 
-        <div class="field">
-          <label for="telefon">No. Telefon <span>*</span></label>
-          <input id="telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" required>
-        </div>
 
         <div class="field">
-          <label for="status">Status <span>*</span></label>
-          <select id="status" name="status" required>
-            <option value="">-- Sila pilih --</option>
-            <option value="Jawatan / Organisasi">Jawatan / Organisasi</option>
-            <option value="Orang Awam">Orang Awam</option>
+
+          <label for="telefon">
+            No. Telefon <span>*</span>
+          </label>
+
+          <input
+            id="telefon"
+            name="telefon"
+            type="tel"
+            inputmode="tel"
+            autocomplete="tel"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="status">
+            Status <span>*</span>
+          </label>
+
+          <select
+            id="status"
+            name="status"
+            required
+          >
+
+            <option value="">
+              -- Sila pilih --
+            </option>
+
+            <option value="Jawatan / Organisasi">
+              Jawatan / Organisasi
+            </option>
+
+            <option value="Orang Awam">
+              Orang Awam
+            </option>
+
           </select>
+
         </div>
 
-        <div class="field hidden" id="jawatanWrap">
-          <label for="jawatan">Jawatan / Organisasi</label>
-          <input id="jawatan" name="jawatan" type="text">
+
+        <div
+          class="field hidden"
+          id="jawatanWrap"
+        >
+
+          <label for="jawatan">
+            Jawatan / Organisasi
+          </label>
+
+          <input
+            id="jawatan"
+            name="jawatan"
+            type="text"
+          >
+
         </div>
+
       </section>
 
+
+      <!-- ================================
+           2. PILIHAN SUMBANGAN
+      ================================= -->
+
       <section class="card">
+
         <h3>2. Pilihan Sumbangan</h3>
-        <p class="muted">Boleh pilih meja, kerusi, atau gabungan kedua-duanya.</p>
+
+        <p class="muted">
+          Boleh pilih meja, kerusi, atau gabungan kedua-duanya.
+        </p>
+
 
         <div class="option-grid">
-          <div class="option-card">
-            <div class="option-title">IKUT MEJA</div>
-            <div class="option-price">RM2,000 / meja</div>
-            <label for="bilanganMeja">Bilangan Meja</label>
-            <input id="bilanganMeja" name="bilanganMeja" type="number" min="0" step="1" value="0">
-          </div>
 
           <div class="option-card">
-            <div class="option-title">IKUT KERUSI</div>
-            <div class="option-price">RM200 / kerusi</div>
-            <label for="bilanganKerusi">Bilangan Kerusi</label>
-            <input id="bilanganKerusi" name="bilanganKerusi" type="number" min="0" step="1" value="0">
+
+            <div class="option-title">
+              IKUT MEJA
+            </div>
+
+            <div class="option-price">
+              RM2,000 / meja
+            </div>
+
+            <label for="bilanganMeja">
+              Bilangan Meja
+            </label>
+
+            <input
+              id="bilanganMeja"
+              name="bilanganMeja"
+              type="number"
+              min="0"
+              step="1"
+              value="0"
+            >
+
           </div>
+
+
+          <div class="option-card">
+
+            <div class="option-title">
+              IKUT KERUSI
+            </div>
+
+            <div class="option-price">
+              RM200 / kerusi
+            </div>
+
+            <label for="bilanganKerusi">
+              Bilangan Kerusi
+            </label>
+
+            <input
+              id="bilanganKerusi"
+              name="bilanganKerusi"
+              type="number"
+              min="0"
+              step="1"
+              value="0"
+            >
+
+          </div>
+
         </div>
+
 
         <div class="summary">
-          <div class="summary-row"><span>Meja</span><strong id="summaryMeja">0 × RM2,000</strong></div>
-          <div class="summary-row"><span>Kerusi</span><strong id="summaryKerusi">0 × RM200</strong></div>
-          <div class="summary-row total-row"><span>JUMLAH DIPERSETUJUI</span><strong id="summaryTotal">RM0.00</strong></div>
+
+          <div class="summary-row">
+            <span>Meja</span>
+            <strong id="summaryMeja">
+              0 × RM2,000
+            </strong>
+          </div>
+
+
+          <div class="summary-row">
+            <span>Kerusi</span>
+            <strong id="summaryKerusi">
+              0 × RM200
+            </strong>
+          </div>
+
+
+          <div class="summary-row total-row">
+            <span>JUMLAH DIPERSETUJUI</span>
+
+            <strong id="summaryTotal">
+              RM0.00
+            </strong>
+          </div>
+
         </div>
+
       </section>
 
+
+      <!-- ================================
+           3. PENGESAHAN KEHADIRAN
+      ================================= -->
+
       <section class="card">
+
         <h3>3. Pengesahan Kehadiran</h3>
 
+
         <div class="field">
-          <label for="jenisKehadiran">Jenis Kehadiran <span>*</span></label>
-          <select id="jenisKehadiran" name="jenisKehadiran" required>
-            <option value="">-- Sila pilih --</option>
-            <option value="Saya akan hadir">Saya akan hadir</option>
-            <option value="Infaq untuk orang lain hadir">Infaq untuk orang lain hadir</option>
-            <option value="Sebahagian hadir dan sebahagian untuk orang lain">Sebahagian hadir dan sebahagian untuk orang lain</option>
+
+          <label for="jenisKehadiran">
+            Jenis Kehadiran <span>*</span>
+          </label>
+
+          <select
+            id="jenisKehadiran"
+            name="jenisKehadiran"
+            required
+          >
+
+            <option value="">
+              -- Sila pilih --
+            </option>
+
+            <option value="Saya akan hadir">
+              Saya akan hadir
+            </option>
+
+            <option value="Infaq untuk orang lain hadir">
+              Infaq untuk orang lain hadir
+            </option>
+
+            <option value="Sebahagian hadir dan sebahagian untuk orang lain">
+              Sebahagian hadir dan sebahagian untuk orang lain
+            </option>
+
           </select>
+
         </div>
+
 
         <div class="two-col">
+
           <div class="field">
-            <label for="jumlahHadir">Jumlah Orang Hadir</label>
-            <input id="jumlahHadir" name="jumlahHadir" type="number" min="0" step="1" value="0">
+
+            <label for="jumlahHadir">
+              Jumlah Orang Hadir
+            </label>
+
+            <input
+              id="jumlahHadir"
+              name="jumlahHadir"
+              type="number"
+              min="0"
+              step="1"
+              value="0"
+            >
+
           </div>
+
+
           <div class="field">
-            <label for="jumlahInfaqHadir">Infaq Untuk Orang Lain Hadir</label>
-            <input id="jumlahInfaqHadir" name="jumlahInfaqHadir" type="number" min="0" step="1" value="0">
+
+            <label for="jumlahInfaqHadir">
+              Infaq Untuk Orang Lain Hadir
+            </label>
+
+            <input
+              id="jumlahInfaqHadir"
+              name="jumlahInfaqHadir"
+              type="number"
+              min="0"
+              step="1"
+              value="0"
+            >
+
           </div>
+
         </div>
+
       </section>
+
+
+      <!-- ================================
+           4. SEMAKAN & PENGESAHAN
+      ================================= -->
 
       <section class="card">
+
         <h3>4. Semakan & Pengesahan</h3>
 
+
         <div class="summary large">
-          <div class="summary-row"><span>Jumlah Meja</span><strong id="reviewMeja">0</strong></div>
-          <div class="summary-row"><span>Jumlah Kerusi</span><strong id="reviewKerusi">0</strong></div>
-          <div class="summary-row"><span>Jumlah Kehadiran</span><strong id="reviewHadir">0 orang</strong></div>
-          <div class="summary-row total-row"><span>JUMLAH YANG DIPERSETUJUI</span><strong id="reviewTotal">RM0.00</strong></div>
+
+          <div class="summary-row">
+            <span>Jumlah Meja</span>
+            <strong id="reviewMeja">
+              0
+            </strong>
+          </div>
+
+
+          <div class="summary-row">
+            <span>Jumlah Kerusi</span>
+            <strong id="reviewKerusi">
+              0
+            </strong>
+          </div>
+
+
+          <div class="summary-row">
+            <span>Jumlah Kehadiran</span>
+            <strong id="reviewHadir">
+              0 orang
+            </strong>
+          </div>
+
+
+          <div class="summary-row total-row">
+
+            <span>
+              JUMLAH YANG DIPERSETUJUI
+            </span>
+
+            <strong id="reviewTotal">
+              RM0.00
+            </strong>
+
+          </div>
+
         </div>
+
 
         <label class="checkline">
-          <input id="pengesahan" name="pengesahan" type="checkbox" required>
-          <span>Saya mengesahkan bahawa maklumat yang diberikan adalah benar dan jumlah sumbangan yang dipersetujui adalah tepat.</span>
+
+          <input
+            id="pengesahan"
+            name="pengesahan"
+            type="checkbox"
+            required
+          >
+
+          <span>
+            Saya mengesahkan bahawa maklumat yang diberikan adalah benar dan jumlah sumbangan yang dipersetujui adalah tepat.
+          </span>
+
         </label>
 
-        <button type="button" class="btn primary" id="continueBtn">TERUSKAN KE PEMBAYARAN</button>
+
+        <button
+          type="button"
+          class="btn primary"
+          id="continueBtn"
+        >
+          TERUSKAN KE PEMBAYARAN
+        </button>
+
       </section>
 
-      <section class="card hidden" id="paymentSection">
+
+      <!-- ================================
+           5. PEMBAYARAN
+      ================================= -->
+
+      <section
+        class="card hidden"
+        id="paymentSection"
+      >
+
         <h3>5. Pembayaran</h3>
 
+
         <div class="payment-panel">
-          <p>Jumlah yang perlu dibayar</p>
-          <div class="payment-total" id="paymentTotal">RM0.00</div>
-          <img src="images/payment-qr.png" alt="QR Code Pembayaran" class="qr" onerror="this.style.display='none'">
-          <p class="muted">Sila buat pembayaran menggunakan QR Code di atas.</p>
-          <p class="muted">Selepas pembayaran, muat naik bukti pembayaran di bawah.</p>
+
+          <p>
+            Jumlah yang perlu dibayar
+          </p>
+
+          <div
+            class="payment-total"
+            id="paymentTotal"
+          >
+            RM0.00
+          </div>
+
+
+          <img
+            src="images/payment-qr.png"
+            alt="QR Code Pembayaran"
+            class="qr"
+            onerror="this.style.display='none'"
+          >
+
+
+          <p class="muted">
+            Sila buat pembayaran menggunakan QR Code di atas.
+          </p>
+
+          <p class="muted">
+            Selepas pembayaran, muat naik bukti pembayaran di bawah.
+          </p>
+
         </div>
+
 
         <div class="field">
-          <label for="resit">Bukti Pembayaran (PDF/JPG/JPEG/PNG) <span>*</span></label>
-         <input id="resit" type="file" accept=".pdf,.jpg,.jpeg,.png">
-          <small>Maksimum 5MB.</small>
+
+          <label for="resit">
+            Bukti Pembayaran (PDF/JPG/JPEG/PNG)
+            <span>*</span>
+          </label>
+
+          <input
+            id="resit"
+            name="resit"
+            type="file"
+            accept=".pdf,.jpg,.jpeg,.png"
+          >
+
+          <small>
+            Maksimum 5MB.
+          </small>
+
         </div>
 
-        <button type="button" class="btn primary" id="submitBtn">HANTAR PENDAFTARAN</button>
-        <p class="form-error" id="formError"></p>
+
+        <button
+          type="button"
+          class="btn primary"
+          id="submitBtn"
+        >
+          HANTAR PENDAFTARAN
+        </button>
+
+
+        <p
+          class="form-error"
+          id="formError"
+        ></p>
+
       </section>
+
     </form>
 
-    <section class="card hidden" id="loadingSection">
+
+    <!-- ================================
+         LOADING
+    ================================= -->
+
+    <section
+      class="card hidden"
+      id="loadingSection"
+    >
+
       <div class="loading">
+
         <div class="spinner"></div>
-        <h3>Sedang memproses...</h3>
-        <p>Pihak Penganjur Akan Menghubungi Tuan Untuk Pengesahan</p>
+
+        <h3>
+          Sedang memproses...
+        </h3>
+
+        <p>
+          Pihak Penganjur Akan Menghubungi Tuan Untuk Pengesahan
+        </p>
+
       </div>
+
+
+      <!--
+        IFRAME RESPONSE GOOGLE APPS SCRIPT
+
+        Sengaja diletakkan di dalam
+        loadingSection supaya response
+        daripada Apps Script berada dalam
+        kawasan proses yang sama.
+      -->
+
+      <iframe
+        name="gasResponseFrame"
+        id="gasResponseFrame"
+        title="Keputusan Pendaftaran"
+        style="
+          display:none;
+          width:100%;
+          min-height:650px;
+          border:0;
+          margin-top:20px;
+          background:#fff;
+        "
+      ></iframe>
+
     </section>
 
-    <section class="card hidden" id="successSection">
+
+    <!-- ================================
+         SUCCESS
+    ================================= -->
+
+    <section
+      class="card hidden"
+      id="successSection"
+    >
+
       <div class="success">
-        <div class="success-icon">✓</div>
-        <h2>Pendaftaran Berjaya</h2>
-        <p>Maklumat dan bukti pembayaran telah diterima.</p>
-        <div class="reference" id="referenceNumber">-</div>
-        <p>Jumlah yang dipersetujui</p>
-        <div class="payment-total" id="successTotal">RM0.00</div>
-        <p class="muted">Status pembayaran: <strong>Menunggu Semakan</strong></p>
-        <a id="pdfLink" class="btn primary link-btn" href="#" target="_blank" rel="noopener">BUKA PDF PENGESAHAN</a>
-        <button class="btn secondary" type="button" onclick="location.reload()">SELESAI</button>
+
+        <div class="success-icon">
+          ✓
+        </div>
+
+
+        <h2>
+          Pendaftaran Berjaya
+        </h2>
+
+
+        <p>
+          Maklumat dan bukti pembayaran telah diterima.
+        </p>
+
+
+        <div
+          class="reference"
+          id="referenceNumber"
+        >
+          -
+        </div>
+
+
+        <p>
+          Jumlah yang dipersetujui
+        </p>
+
+
+        <div
+          class="payment-total"
+          id="successTotal"
+        >
+          RM0.00
+        </div>
+
+
+        <p class="muted">
+          Status pembayaran:
+          <strong>Menunggu Semakan</strong>
+        </p>
+
+
+        <a
+          id="pdfLink"
+          class="btn primary link-btn"
+          href="#"
+          target="_blank"
+          rel="noopener"
+        >
+          BUKA PDF PENGESAHAN
+        </a>
+
+
+        <button
+          class="btn secondary"
+          type="button"
+          onclick="location.reload()"
+        >
+          SELESAI
+        </button>
+
       </div>
+
     </section>
 
-    <iframe name="gasResponseFrame" id="gasResponseFrame" class="hidden-frame" title="Response"></iframe>
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
 
     <footer>
-      Majlis Makan Malam 30 Tahun PAS Sarawak 2026<br>
+
+      Majlis Makan Malam 30 Tahun PAS Sarawak 2026
+      <br>
       Tabung Pilihanraya PAS Sarawak
+
     </footer>
+
   </main>
 
-<script src="script.js?v=4"></script>
+
+  <!-- ================================
+       JAVASCRIPT
+  ================================= -->
+
+  <script src="script.js?v=5"></script>
+
 </body>
 </html>
