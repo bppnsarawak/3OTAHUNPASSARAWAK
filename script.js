@@ -1,6 +1,12 @@
-/* ================================
+/* =====================================================
+   MAJLIS MAKAN MALAM 30 TAHUN PAS SARAWAK 2026
+   SCRIPT.JS - VERSI AKHIR
+===================================================== */
+
+
+/* =====================================================
    CONFIG
-================================ */
+===================================================== */
 
 const APPS_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbz2upbhGL900JN2KnOO4P1DRn5NhKG00pbJkuAo9tGxyqPFNJQMNCdlRC0AuBNA4hUx/exec";
@@ -10,11 +16,16 @@ const CHAIR_PRICE = 200;
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
 
-/* ================================
-   ELEMENTS
-================================ */
+/* =====================================================
+   ELEMENT HELPER
+===================================================== */
 
 const $ = (id) => document.getElementById(id);
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 const form = $("registrationForm");
 
@@ -31,23 +42,41 @@ const successSection = $("successSection");
 const submitBtn = $("submitBtn");
 const continueBtn = $("continueBtn");
 
+const responseFrame = $("gasResponseFrame");
 
-/* ================================
-   HELPERS
-================================ */
+
+/* =====================================================
+   HELPER - DUIT
+===================================================== */
 
 function money(value) {
-  return "RM" + Number(value || 0).toLocaleString("ms-MY", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
+
+  return "RM" +
+    Number(value || 0).toLocaleString(
+      "ms-MY",
+      {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }
+    );
 }
 
 
-function integerValue(el) {
-  if (!el) return 0;
+/* =====================================================
+   HELPER - INTEGER
+===================================================== */
 
-  const n = parseInt(el.value, 10);
+function integerValue(el) {
+
+  if (!el) {
+    return 0;
+  }
+
+  const n =
+    parseInt(
+      el.value,
+      10
+    );
 
   return Number.isFinite(n) && n > 0
     ? n
@@ -55,16 +84,29 @@ function integerValue(el) {
 }
 
 
+/* =====================================================
+   KIRA JUMLAH
+===================================================== */
+
 function calculateTotal() {
-  const meja = integerValue(mejaEl);
-  const kerusi = integerValue(kerusiEl);
+
+  const meja =
+    integerValue(mejaEl);
+
+  const kerusi =
+    integerValue(kerusiEl);
 
   return (
-    meja * TABLE_PRICE +
+    meja * TABLE_PRICE
+  ) + (
     kerusi * CHAIR_PRICE
   );
 }
 
+
+/* =====================================================
+   UPDATE RINGKASAN
+===================================================== */
 
 function updateSummary() {
 
@@ -82,91 +124,139 @@ function updateSummary() {
 
 
   if ($("summaryMeja")) {
+
     $("summaryMeja").textContent =
       `${meja} × RM2,000`;
   }
 
 
   if ($("summaryKerusi")) {
+
     $("summaryKerusi").textContent =
       `${kerusi} × RM200`;
   }
 
 
   if ($("summaryTotal")) {
+
     $("summaryTotal").textContent =
       money(total);
   }
 
 
   if ($("reviewMeja")) {
+
     $("reviewMeja").textContent =
       meja;
   }
 
 
   if ($("reviewKerusi")) {
+
     $("reviewKerusi").textContent =
       kerusi;
   }
 
 
   if ($("reviewHadir")) {
+
     $("reviewHadir").textContent =
       `${hadir} orang`;
   }
 
 
   if ($("reviewTotal")) {
+
     $("reviewTotal").textContent =
       money(total);
   }
 
 
   if ($("paymentTotal")) {
+
     $("paymentTotal").textContent =
       money(total);
   }
 
 
   if ($("successTotal")) {
+
     $("successTotal").textContent =
       money(total);
   }
 }
 
 
+/* =====================================================
+   SHOW
+===================================================== */
+
 function show(el) {
 
   if (el) {
-    el.classList.remove("hidden");
+
+    el.classList.remove(
+      "hidden"
+    );
   }
 }
 
+
+/* =====================================================
+   HIDE
+===================================================== */
 
 function hide(el) {
 
   if (el) {
-    el.classList.add("hidden");
+
+    el.classList.add(
+      "hidden"
+    );
   }
 }
 
 
-/* ================================
+/* =====================================================
+   RESET BUTTON
+===================================================== */
+
+function resetSubmitButton() {
+
+  if (!submitBtn) {
+    return;
+  }
+
+  submitBtn.disabled =
+    false;
+
+  submitBtn.textContent =
+    "HANTAR PENDAFTARAN";
+}
+
+
+/* =====================================================
    VALIDASI UTAMA
-================================ */
+===================================================== */
 
 function validateMain() {
 
   const mainFields = [
+
     $("nama"),
+
     $("telefon"),
+
     $("status"),
+
     $("jenisKehadiran")
   ];
 
 
-  for (const field of mainFields) {
+  for (
+    const field
+    of mainFields
+  ) {
 
     if (!field) {
       continue;
@@ -176,6 +266,7 @@ function validateMain() {
     if (!field.checkValidity()) {
 
       field.reportValidity();
+
       field.focus();
 
       return false;
@@ -183,7 +274,9 @@ function validateMain() {
   }
 
 
-  /* JAWATAN */
+  /* ================================
+     JAWATAN / ORGANISASI
+  ================================= */
 
   if (
     statusEl &&
@@ -211,7 +304,9 @@ function validateMain() {
   }
 
 
-  /* MEJA / KERUSI */
+  /* ================================
+     MEJA / KERUSI
+  ================================= */
 
   const meja =
     integerValue(mejaEl);
@@ -237,7 +332,9 @@ function validateMain() {
   }
 
 
-  /* PENGESAHAN */
+  /* ================================
+     PENGESAHAN
+  ================================= */
 
   const pengesahan =
     $("pengesahan");
@@ -258,7 +355,9 @@ function validateMain() {
   }
 
 
-  /* KEHADIRAN */
+  /* ================================
+     KEHADIRAN
+  ================================= */
 
   const hadir =
     integerValue(hadirEl);
@@ -287,9 +386,9 @@ function validateMain() {
 }
 
 
-/* ================================
+/* =====================================================
    STATUS / JAWATAN
-================================ */
+===================================================== */
 
 if (statusEl) {
 
@@ -310,22 +409,28 @@ if (statusEl) {
       ) {
 
         if (wrap) {
+
           wrap.classList.remove(
             "hidden"
           );
         }
 
+
         if (jawatanEl) {
-          jawatanEl.required = true;
+
+          jawatanEl.required =
+            true;
         }
 
       } else {
 
         if (wrap) {
+
           wrap.classList.add(
             "hidden"
           );
         }
+
 
         if (jawatanEl) {
 
@@ -341,36 +446,41 @@ if (statusEl) {
 }
 
 
-/* ================================
+/* =====================================================
    LIVE SUMMARY
-================================ */
+===================================================== */
 
 [
   mejaEl,
   kerusiEl,
   hadirEl,
   infaqEl
-].forEach(function (el) {
 
-  if (!el) return;
+].forEach(
+  function (el) {
 
-
-  el.addEventListener(
-    "input",
-    updateSummary
-  );
+    if (!el) {
+      return;
+    }
 
 
-  el.addEventListener(
-    "change",
-    updateSummary
-  );
-});
+    el.addEventListener(
+      "input",
+      updateSummary
+    );
 
 
-/* ================================
+    el.addEventListener(
+      "change",
+      updateSummary
+    );
+  }
+);
+
+
+/* =====================================================
    TERUSKAN KE PEMBAYARAN
-================================ */
+===================================================== */
 
 if (continueBtn) {
 
@@ -396,15 +506,6 @@ if (continueBtn) {
       );
 
 
-      if ($("paymentTotal")) {
-
-        $("paymentTotal").textContent =
-          money(
-            calculateTotal()
-          );
-      }
-
-
       if (paymentSection) {
 
         paymentSection.scrollIntoView({
@@ -417,9 +518,9 @@ if (continueBtn) {
 }
 
 
-/* ================================
-   SUBMIT PENDAFTARAN
-================================ */
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
 
 if (submitBtn) {
 
@@ -429,6 +530,10 @@ if (submitBtn) {
   );
 }
 
+
+/* =====================================================
+   SUBMIT PENDAFTARAN
+===================================================== */
 
 async function submitRegistration() {
 
@@ -442,9 +547,15 @@ async function submitRegistration() {
 
 
   if (formError) {
-    formError.textContent = "";
+
+    formError.textContent =
+      "";
   }
 
+
+  /* ================================
+     SEMAK FAIL INPUT
+  ================================= */
 
   const fileInput =
     $("resit");
@@ -452,9 +563,11 @@ async function submitRegistration() {
 
   if (!fileInput) {
 
-    alert(
-      "Ralat: ruangan bukti pembayaran tidak dijumpai."
-    );
+    if (formError) {
+
+      formError.textContent =
+        "Ralat: ruangan bukti pembayaran tidak dijumpai.";
+    }
 
     return;
   }
@@ -464,8 +577,6 @@ async function submitRegistration() {
     fileInput.files &&
     fileInput.files[0];
 
-
-  /* SEMAK FAIL */
 
   if (!file) {
 
@@ -481,9 +592,16 @@ async function submitRegistration() {
   }
 
 
+  /* ================================
+     FORMAT FAIL
+  ================================= */
+
   const allowedTypes = [
+
     "application/pdf",
+
     "image/jpeg",
+
     "image/png"
   ];
 
@@ -500,11 +618,16 @@ async function submitRegistration() {
         "Format fail tidak dibenarkan. Sila gunakan PDF, JPG atau PNG.";
     }
 
-    fileInput.value = "";
+    fileInput.value =
+      "";
 
     return;
   }
 
+
+  /* ================================
+     SAIZ FAIL
+  ================================= */
 
   if (
     file.size >
@@ -517,13 +640,16 @@ async function submitRegistration() {
         "Saiz fail maksimum ialah 5MB.";
     }
 
-    fileInput.value = "";
+    fileInput.value =
+      "";
 
     return;
   }
 
 
-  /* SEMAK URL */
+  /* ================================
+     SEMAK URL APPS SCRIPT
+  ================================= */
 
   if (
     !APPS_SCRIPT_URL ||
@@ -542,20 +668,45 @@ async function submitRegistration() {
   }
 
 
-  /* PAPAR LOADING */
+  /* ================================
+     LOCK BUTTON
+  ================================= */
 
-  if (submitBtn) {
+  submitBtn.disabled =
+    true;
 
-    submitBtn.disabled = true;
+  submitBtn.textContent =
+    "MEMPROSES...";
 
-    submitBtn.textContent =
-      "MEMPROSES...";
+
+  /* ================================
+     PAPAR LOADING
+  ================================= */
+
+  hide(
+    paymentSection
+  );
+
+  hide(
+    successSection
+  );
+
+  show(
+    loadingSection
+  );
+
+
+  /* ================================
+     SCROLL KE LOADING
+  ================================= */
+
+  if (loadingSection) {
+
+    loadingSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
   }
-
-
-  hide(paymentSection);
-
-  show(loadingSection);
 
 
   try {
@@ -566,7 +717,9 @@ async function submitRegistration() {
 
 
     const base64 =
-      await fileToBase64(file);
+      await fileToBase64(
+        file
+      );
 
 
     console.log(
@@ -574,7 +727,9 @@ async function submitRegistration() {
     );
 
 
-    /* BINA DATA */
+    /* ================================
+       BINA PAYLOAD
+    ================================= */
 
     const payload = {
 
@@ -583,49 +738,70 @@ async function submitRegistration() {
           ? $("nama").value.trim()
           : "",
 
+
       telefon:
         $("telefon")
           ? $("telefon").value.trim()
           : "",
+
 
       status:
         $("status")
           ? $("status").value
           : "",
 
+
       jawatan:
         $("jawatan")
           ? $("jawatan").value.trim()
           : "",
 
+
       bilanganMeja:
-        integerValue(mejaEl),
+        integerValue(
+          mejaEl
+        ),
+
 
       bilanganKerusi:
-        integerValue(kerusiEl),
+        integerValue(
+          kerusiEl
+        ),
+
 
       jenisKehadiran:
         $("jenisKehadiran")
           ? $("jenisKehadiran").value
           : "",
 
+
       jumlahHadir:
-        integerValue(hadirEl),
+        integerValue(
+          hadirEl
+        ),
+
 
       jumlahInfaqHadir:
-        integerValue(infaqEl),
+        integerValue(
+          infaqEl
+        ),
+
 
       clientTotal:
         calculateTotal(),
 
+
       fileName:
         file.name,
+
 
       fileType:
         file.type,
 
+
       fileBase64:
         base64,
+
 
       parentOrigin:
         window.location.origin
@@ -633,71 +809,63 @@ async function submitRegistration() {
 
 
     console.log(
-      "Menghantar data ke Apps Script..."
+      "Data siap dihantar."
     );
 
+
+    /* ================================
+       RESET IFRAME
+    ================================= */
+
+    if (responseFrame) {
+
+      responseFrame.style.display =
+        "none";
+
+      responseFrame.src =
+        "about:blank";
+    }
+
+
+    /* ================================
+       HANTAR KE APPS SCRIPT
+    ================================= */
 
     postToAppsScript(
       payload
     );
 
 
-    /*
-      Kita tidak lagi bergantung
-      kepada window.postMessage.
-
-      Response Apps Script akan
-      dipaparkan terus dalam
-      gasResponseFrame.
-    */
+    console.log(
+      "POST berjaya dihantar ke Apps Script."
+    );
 
 
   } catch (err) {
 
     console.error(
-      "Ralat:",
+      "Ralat submit:",
       err
     );
 
 
-    hide(
-      loadingSection
+    showSubmitError(
+      err &&
+      err.message
+        ? err.message
+        : String(err)
     );
-
-
-    show(
-      paymentSection
-    );
-
-
-    if (submitBtn) {
-
-      submitBtn.disabled =
-        false;
-
-      submitBtn.textContent =
-        "HANTAR PENDAFTARAN";
-    }
-
-
-    if (formError) {
-
-      formError.textContent =
-        "Gagal membaca fail: " +
-        (
-          err.message ||
-          err
-        );
-    }
   }
 }
 
 
-/* ================================
+/* =====================================================
    FILE → BASE64
-================================ */
+===================================================== */
 
-function fileToBase64(file) {
+function fileToBase64(
+  file
+) {
 
   return new Promise(
     function (
@@ -719,14 +887,19 @@ function fileToBase64(file) {
 
 
           const comma =
-            result.indexOf(",");
+            result.indexOf(
+              ","
+            );
 
 
           resolve(
+
             comma >= 0
+
               ? result.substring(
                   comma + 1
                 )
+
               : result
           );
         };
@@ -751,22 +924,18 @@ function fileToBase64(file) {
 }
 
 
-/* ================================
+/* =====================================================
    POST KE GOOGLE APPS SCRIPT
-================================ */
+===================================================== */
 
 function postToAppsScript(
   data
 ) {
 
-  const iframe =
-    $("gasResponseFrame");
-
-
-  if (!iframe) {
+  if (!responseFrame) {
 
     throw new Error(
-      "gasResponseFrame tidak dijumpai dalam HTML."
+      "gasResponseFrame tidak dijumpai dalam index.html."
     );
   }
 
@@ -776,31 +945,23 @@ function postToAppsScript(
     nama sasaran.
   */
 
-  if (!iframe.name) {
-
-    iframe.name =
-      "gasResponseFrame";
-  }
+  responseFrame.name =
+    "gasResponseFrame";
 
 
   /*
-    Iframe akan digunakan sebagai
-    tempat memaparkan response
-    daripada Apps Script.
+    Iframe sengaja DISEMBUNYIKAN.
+    Ia hanya menjadi saluran response.
   */
 
-  iframe.style.width =
-    "100%";
+  responseFrame.style.display =
+    "none";
 
-  iframe.style.minHeight =
-    "520px";
 
-  iframe.style.border =
-    "0";
-
-  iframe.style.display =
-    "block";
-
+  /*
+    Buang iframe lama jika ada
+    dan bina form POST baharu.
+  */
 
   const tempForm =
     document.createElement(
@@ -811,57 +972,69 @@ function postToAppsScript(
   tempForm.method =
     "POST";
 
+
   tempForm.action =
     APPS_SCRIPT_URL;
 
+
   tempForm.target =
-    iframe.name;
+    "gasResponseFrame";
+
 
   tempForm.enctype =
     "application/x-www-form-urlencoded";
+
 
   tempForm.style.display =
     "none";
 
 
+  /*
+    Masukkan semua data.
+  */
+
   Object.entries(
     data
-  ).forEach(function (
-    entry
-  ) {
+  ).forEach(
+    function (
+      entry
+    ) {
 
-    const key =
-      entry[0];
+      const key =
+        entry[0];
 
-    const value =
-      entry[1];
-
-
-    const input =
-      document.createElement(
-        "input"
-      );
+      const value =
+        entry[1];
 
 
-    input.type =
-      "hidden";
+      const input =
+        document.createElement(
+          "input"
+        );
 
-    input.name =
-      key;
 
-    input.value =
-      String(
+      input.type =
+        "hidden";
+
+
+      input.name =
+        key;
+
+
+      input.value =
         value === undefined ||
         value === null
+
           ? ""
-          : value
+
+          : String(value);
+
+
+      tempForm.appendChild(
+        input
       );
-
-
-    tempForm.appendChild(
-      input
-    );
-  });
+    }
+  );
 
 
   document.body.appendChild(
@@ -874,8 +1047,17 @@ function postToAppsScript(
   );
 
 
+  /*
+    Hantar.
+  */
+
   tempForm.submit();
 
+
+  /*
+    Jangan terus buang form terlalu cepat.
+    Biarkan browser menyelesaikan submission.
+  */
 
   setTimeout(
     function () {
@@ -890,13 +1072,231 @@ function postToAppsScript(
       }
 
     },
-    1000
+    3000
   );
 }
 
 
-/* ================================
+/* =====================================================
+   TERIMA RESPONSE DARIPADA APPS SCRIPT
+===================================================== */
+
+window.addEventListener(
+  "message",
+  function (event) {
+
+    console.log(
+      "Message diterima:",
+      event.data
+    );
+
+
+    /*
+      Pastikan response mempunyai
+      format MMS30_RESULT.
+    */
+
+    if (
+      !event.data ||
+      event.data.type !==
+        "MMS30_RESULT"
+    ) {
+
+      return;
+    }
+
+
+    const result =
+      event.data;
+
+
+    /* ================================
+       PROSES SUDAH SELESAI
+    ================================= */
+
+    hide(
+      loadingSection
+    );
+
+
+    /* ================================
+       JIKA BERJAYA
+    ================================= */
+
+    if (
+      result.ok === true
+    ) {
+
+      hide(
+        paymentSection
+      );
+
+
+      show(
+        successSection
+      );
+
+
+      /*
+        NOMBOR RUJUKAN
+      */
+
+      const referenceEl =
+        $("referenceNumber");
+
+
+      if (referenceEl) {
+
+        referenceEl.textContent =
+          result.reference ||
+          "-";
+      }
+
+
+      /*
+        JUMLAH
+      */
+
+      const successTotalEl =
+        $("successTotal");
+
+
+      if (successTotalEl) {
+
+        successTotalEl.textContent =
+          money(
+            result.total ||
+            calculateTotal()
+          );
+      }
+
+
+      /*
+        PAUTAN PDF
+      */
+
+      const pdf =
+        $("pdfLink");
+
+
+      if (
+        pdf &&
+        result.pdfUrl
+      ) {
+
+        pdf.href =
+          result.pdfUrl;
+
+        pdf.style.display =
+          "inline-flex";
+
+        pdf.target =
+          "_blank";
+
+        pdf.rel =
+          "noopener";
+      }
+
+
+      /*
+        RESET BUTTON
+      */
+
+      resetSubmitButton();
+
+
+      /*
+        SCROLL KE SUCCESS
+      */
+
+      if (successSection) {
+
+        successSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+
+
+      console.log(
+        "Pendaftaran berjaya:",
+        result.reference
+      );
+
+
+      return;
+    }
+
+
+    /* ================================
+       JIKA GAGAL
+    ================================= */
+
+    showSubmitError(
+      result.message ||
+      "Pendaftaran tidak berjaya. Sila cuba semula."
+    );
+
+  }
+);
+
+
+/* =====================================================
+   PAPAR RALAT
+===================================================== */
+
+function showSubmitError(
+  message
+) {
+
+  hide(
+    loadingSection
+  );
+
+
+  show(
+    paymentSection
+  );
+
+
+  resetSubmitButton();
+
+
+  const formError =
+    $("formError");
+
+
+  if (formError) {
+
+    formError.textContent =
+      message ||
+      "Ralat tidak diketahui.";
+  }
+
+
+  if (paymentSection) {
+
+    paymentSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+
+  console.error(
+    "Ralat pendaftaran:",
+    message
+  );
+}
+
+
+/* =====================================================
    INITIAL
-================================ */
+===================================================== */
 
 updateSummary();
+
+
+console.log(
+  "script.js versi akhir dimuatkan."
+);
