@@ -7,9 +7,6 @@
   <title>Majlis Makan Malam 30 Tahun PAS Sarawak 2026</title>
 
   <link rel="stylesheet" href="style.css">
-
-  <!-- Library PDF untuk PDF pengguna -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -98,30 +95,6 @@
         </div>
 
 
-        <!-- PENGESAHAN NO. TELEFON -->
-
-        <div class="field">
-
-          <label for="telefonSah">
-            Sahkan No. Telefon <span>*</span>
-          </label>
-
-          <input
-            id="telefonSah"
-            name="telefonSah"
-            type="tel"
-            inputmode="tel"
-            autocomplete="off"
-            required
-          >
-
-          <small>
-            Sila masukkan semula no. telefon untuk pengesahan.
-          </small>
-
-        </div>
-
-
         <div class="field">
 
           <label for="status">
@@ -138,8 +111,8 @@
               -- Sila pilih --
             </option>
 
-            <option value="Ahli Jawatankuasa">
-              Ahli Jawatankuasa
+            <option value="Jawatan / Organisasi">
+              Jawatan / Organisasi
             </option>
 
             <option value="Orang Awam">
@@ -157,7 +130,7 @@
         >
 
           <label for="jawatan">
-            Jawatan / Unit / Organisasi
+            Jawatan / Organisasi
           </label>
 
           <input
@@ -193,7 +166,7 @@
             </div>
 
             <div class="option-price">
-              RM2,500 / meja
+              RM2,000 / meja
             </div>
 
             <label for="bilanganMeja">
@@ -219,7 +192,7 @@
             </div>
 
             <div class="option-price">
-              RM250 / kerusi
+              RM200 / kerusi
             </div>
 
             <label for="bilanganKerusi">
@@ -245,7 +218,7 @@
           <div class="summary-row">
             <span>Meja</span>
             <strong id="summaryMeja">
-              0 × RM2,500
+              0 × RM2,000
             </strong>
           </div>
 
@@ -253,7 +226,7 @@
           <div class="summary-row">
             <span>Kerusi</span>
             <strong id="summaryKerusi">
-              0 × RM250
+              0 × RM200
             </strong>
           </div>
 
@@ -363,64 +336,30 @@
 
         <h3>4. Semakan & Pengesahan</h3>
 
-        <p class="muted">
-          Sila semak semua maklumat di bawah sebelum meneruskan ke pembayaran.
-        </p>
-
 
         <div class="summary large">
 
           <div class="summary-row">
-            <span>Nama</span>
-            <strong id="reviewNama">-</strong>
-          </div>
-
-
-          <div class="summary-row">
-            <span>No. Telefon</span>
-            <strong id="reviewTelefon">-</strong>
-          </div>
-
-
-          <div class="summary-row">
-            <span>Status</span>
-            <strong id="reviewStatus">-</strong>
-          </div>
-
-
-          <div class="summary-row">
-            <span>Jawatan / Organisasi</span>
-            <strong id="reviewJawatan">-</strong>
-          </div>
-
-
-          <div class="summary-row">
             <span>Jumlah Meja</span>
-            <strong id="reviewMeja">0</strong>
+            <strong id="reviewMeja">
+              0
+            </strong>
           </div>
 
 
           <div class="summary-row">
             <span>Jumlah Kerusi</span>
-            <strong id="reviewKerusi">0</strong>
-          </div>
-
-
-          <div class="summary-row">
-            <span>Jenis Kehadiran</span>
-            <strong id="reviewJenisKehadiran">-</strong>
+            <strong id="reviewKerusi">
+              0
+            </strong>
           </div>
 
 
           <div class="summary-row">
             <span>Jumlah Kehadiran</span>
-            <strong id="reviewHadir">0 orang</strong>
-          </div>
-
-
-          <div class="summary-row">
-            <span>Infaq Untuk Orang Lain</span>
-            <strong id="reviewInfaq">0 orang</strong>
+            <strong id="reviewHadir">
+              0 orang
+            </strong>
           </div>
 
 
@@ -449,7 +388,7 @@
           >
 
           <span>
-            Saya mengesahkan bahawa semua maklumat di atas adalah benar dan jumlah sumbangan yang dipersetujui adalah tepat.
+            Saya mengesahkan bahawa maklumat yang diberikan adalah benar dan jumlah sumbangan yang dipersetujui adalah tepat.
           </span>
 
         </label>
@@ -492,6 +431,8 @@
           </div>
 
 
+          <!-- QR CODE PEMBAYARAN SEDIA ADA -->
+
           <img
             src="images/payment-qr.png"
             alt="QR Code Pembayaran"
@@ -501,9 +442,14 @@
 
 
           <p class="muted">
-            Sila buat pembayaran menggunakan QR Code di atas atau melalui pautan InfaqPay di bawah.
+            Sila buat pembayaran menggunakan QR Code di atas
+            atau melalui pautan InfaqPay di bawah.
           </p>
 
+
+          <!-- ================================
+               INFAQPAY
+          ================================= -->
 
           <a
             href="https://infaqpay.my/plus/bppnsarawak-sumbangan"
@@ -583,15 +529,22 @@
         <div class="spinner"></div>
 
         <h3>
-          Sedang memproses pendaftaran...
+          Sedang memproses...
         </h3>
 
         <p>
-          Sila tunggu dan jangan tutup halaman ini. Sistem sedang menyimpan maklumat, bukti pembayaran dan menyediakan pengesahan.
+          Pihak Penganjur Akan Menghubungi Tuan Untuk Pengesahan
         </p>
 
       </div>
 
+
+      <!--
+        IFRAME RESPONSE GOOGLE APPS SCRIPT
+
+        Jangan ubah bahagian ini kerana
+        ia digunakan oleh script.js.
+      -->
 
       <iframe
         name="gasResponseFrame"
@@ -667,8 +620,10 @@
           id="pdfLink"
           class="btn primary link-btn"
           href="#"
+          target="_blank"
+          rel="noopener"
         >
-          MUAT TURUN PDF PENGESAHAN
+          BUKA PDF PENGESAHAN
         </a>
 
 
@@ -704,7 +659,7 @@
        JAVASCRIPT
   ================================= -->
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=5"></script>
 
 </body>
 </html>
