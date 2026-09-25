@@ -11,7 +11,7 @@
 const APPS_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbz2upbhGL900JN2KnOO4P1DRn5NhKG00pbJkuAo9tGxyqPFNJQMNCdlRC0AuBNA4hUx/exec";
 
-const TABLE_PRICE = 2500;
+const TABLE_PRICE = 1000;
 const CHAIR_PRICE = 250;
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
