@@ -126,14 +126,14 @@ function updateSummary() {
   if ($("summaryMeja")) {
 
     $("summaryMeja").textContent =
-      `${meja} × RM2,000`;
+      `${meja} × RM2,500`;
   }
 
 
   if ($("summaryKerusi")) {
 
     $("summaryKerusi").textContent =
-      `${kerusi} × RM200`;
+      `${kerusi} × RM250`;
   }
 
 
